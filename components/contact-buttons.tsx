@@ -12,9 +12,10 @@ const GMAIL_SUBJECT = 'Inquiry about NFPC.ae domain purchase'
 export function EmailButton({ email }: EmailButtonProps) {
   const encodedEmail = encodeURIComponent(email)
   const encodedSubject = encodeURIComponent(GMAIL_SUBJECT)
+  const mailtoLink = `mailto:${email}?subject=${encodedSubject}`
   const gmailWebLink = `https://mail.google.com/mail/u/0/?view=cm&to=${encodedEmail}&su=${encodedSubject}`
-  const gmailIosLink = `googlegmail:///co?to=${encodedEmail}&subject=${encodedSubject}`
-  const gmailAndroidIntent = `intent://co?to=${encodedEmail}&subject=${encodedSubject}#Intent;scheme=googlegmail;package=com.google.android.gm;end`
+  const gmailIosLink = `googlegmail://co?to=${encodedEmail}&subject=${encodedSubject}`
+  const gmailAndroidIntent = `intent://send/${encodedEmail}#Intent;scheme=mailto;package=com.google.android.gm;S.subject=${encodedSubject};end`
 
   const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
@@ -28,7 +29,12 @@ export function EmailButton({ email }: EmailButtonProps) {
       const fallbackToWeb = () => {
         if (!document.hidden && !fallbackTriggered) {
           fallbackTriggered = true
-          window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
+          window.location.href = mailtoLink
+          setTimeout(() => {
+            if (!document.hidden) {
+              window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
+            }
+          }, 1000)
         }
       }
 
@@ -42,7 +48,12 @@ export function EmailButton({ email }: EmailButtonProps) {
       const fallbackToWeb = () => {
         if (!document.hidden && !fallbackTriggered) {
           fallbackTriggered = true
-          window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
+          window.location.href = mailtoLink
+          setTimeout(() => {
+            if (!document.hidden) {
+              window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
+            }
+          }, 1000)
         }
       }
 
