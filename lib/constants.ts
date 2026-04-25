@@ -1,6 +1,6 @@
-export const CONTACT_EMAIL = 'sajeelashiq1@gmail.com'
+export const CONTACT_EMAIL = 'amer@chediac.me'
 
-export const PHONE_COUNTRY_CODE = '+92'
-export const PHONE_LOCAL_NUMBER = '03019209337'
+export const PHONE_COUNTRY_CODE = '+971'
+export const PHONE_LOCAL_NUMBER = '0555466398'
 
 export const WHATSAPP_NUMBER = `${PHONE_COUNTRY_CODE}${PHONE_LOCAL_NUMBER.slice(1)}`
