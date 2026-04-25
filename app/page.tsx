@@ -1,9 +1,10 @@
-import { Mail, MessageCircle } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
 import {
   CONTACT_EMAIL,
   PHONE_LOCAL_NUMBER,
   WHATSAPP_NUMBER,
 } from '@/lib/constants'
+import { EmailButton } from '@/components/contact-buttons'
 
 export const metadata = {
   title: 'NFPC.ae - Premium Domain For Sale',
@@ -15,9 +16,6 @@ export default function Home() {
   const whatsapp = WHATSAPP_NUMBER
   const whatsappMessage = `Hi, I'm interested in purchasing the domain NFPC.ae`
   const whatsappLink = `https://wa.me/${whatsapp.replace(/\D/g, '')}?text=${encodeURIComponent(whatsappMessage)}`
-  const gmailComposeLink = `https://mail.google.com/mail/u/0/?view=cm&to=${encodeURIComponent(email)}&su=${encodeURIComponent(
-    'Inquiry about NFPC.ae domain purchase'
-  )}`
 
   return (
     <main className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100 flex flex-col items-center justify-center p-4 sm:p-8">
@@ -45,15 +43,7 @@ export default function Home() {
         {/* Contact Buttons */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
           {/* Email Button */}
-          <a
-            href={gmailComposeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 text-white px-8 py-4 rounded-lg font-semibold transition-colors duration-200 shadow-lg hover:shadow-xl"
-          >
-            <Mail size={24} />
-            Send Email
-          </a>
+          <EmailButton email={email} />
 
           {/* WhatsApp Button */}
           <a
