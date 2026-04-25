@@ -15,7 +15,7 @@ export function EmailButton({ email }: EmailButtonProps) {
   const mailtoLink = `mailto:${email}?subject=${encodedSubject}`
   const gmailWebLink = `https://mail.google.com/mail/u/0/?view=cm&to=${encodedEmail}&su=${encodedSubject}`
   const gmailIosLink = `googlegmail://co?to=${encodedEmail}&subject=${encodedSubject}`
-  const gmailAndroidIntent = `intent://send/${encodedEmail}#Intent;scheme=mailto;package=com.google.android.gm;S.subject=${encodedSubject};end`
+  const gmailAndroidIntent = `intent:${encodedEmail}#Intent;scheme=mailto;package=com.google.android.gm;S.subject=${encodedSubject};end`
 
   const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
