@@ -13,8 +13,8 @@ export function EmailButton({ email }: EmailButtonProps) {
   const encodedEmail = encodeURIComponent(email)
   const encodedSubject = encodeURIComponent(GMAIL_SUBJECT)
   const gmailWebLink = `https://mail.google.com/mail/u/0/?view=cm&to=${encodedEmail}&su=${encodedSubject}`
-  const gmailIosLink = `googlegmail://co?to=${encodedEmail}&subject=${encodedSubject}`
-  const gmailAndroidIntent = `intent://compose?to=${encodedEmail}&subject=${encodedSubject}#Intent;scheme=googlegmail;package=com.google.android.gm;end`
+  const gmailIosLink = `googlegmail:///co?to=${encodedEmail}&subject=${encodedSubject}`
+  const gmailAndroidIntent = `intent://co?to=${encodedEmail}&subject=${encodedSubject}#Intent;scheme=googlegmail;package=com.google.android.gm;end`
 
   const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
@@ -24,18 +24,30 @@ export function EmailButton({ email }: EmailButtonProps) {
     const isIOS = /iPhone|iPad|iPod/i.test(userAgent)
 
     if (isAndroid) {
+      let fallbackTriggered = false
+      const fallbackToWeb = () => {
+        if (!document.hidden && !fallbackTriggered) {
+          fallbackTriggered = true
+          window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
+        }
+      }
+
       window.location.href = gmailAndroidIntent
-      setTimeout(() => {
-        window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
-      }, 700)
+      setTimeout(fallbackToWeb, 1200)
       return
     }
 
     if (isIOS) {
+      let fallbackTriggered = false
+      const fallbackToWeb = () => {
+        if (!document.hidden && !fallbackTriggered) {
+          fallbackTriggered = true
+          window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
+        }
+      }
+
       window.location.href = gmailIosLink
-      setTimeout(() => {
-        window.open(gmailWebLink, '_blank', 'noopener,noreferrer')
-      }, 700)
+      setTimeout(fallbackToWeb, 1200)
       return
     }
 
