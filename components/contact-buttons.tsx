@@ -12,10 +12,11 @@ const GMAIL_SUBJECT = 'Inquiry about NFPC.ae domain purchase'
 export function EmailButton({ email }: EmailButtonProps) {
   const encodedEmail = encodeURIComponent(email)
   const encodedSubject = encodeURIComponent(GMAIL_SUBJECT)
+  const encodedSubjectForIntent = encodeURIComponent(GMAIL_SUBJECT)
   const mailtoLink = `mailto:${email}?subject=${encodedSubject}`
   const gmailWebLink = `https://mail.google.com/mail/u/0/?view=cm&to=${encodedEmail}&su=${encodedSubject}`
-  const gmailIosLink = `googlegmail://co?to=${encodedEmail}&subject=${encodedSubject}`
-  const gmailAndroidIntent = `intent:${encodedEmail}#Intent;scheme=mailto;package=com.google.android.gm;S.subject=${encodedSubject};end`
+  const gmailIosLink = `googlegmail://co?to=${encodedEmail}&subject=${encodedSubject}&su=${encodedSubject}`
+  const gmailAndroidIntent = `intent://sendto/${encodedEmail}#Intent;scheme=mailto;package=com.google.android.gm;S.subject=${encodedSubjectForIntent};S.android.intent.extra.SUBJECT=${encodedSubjectForIntent};end`
 
   const handleEmailClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault()
