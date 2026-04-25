@@ -72,7 +72,7 @@ export default function Home() {
 
         {/* Footer */}
         <div className="pt-8 text-slate-500 text-sm">
-          <p>&copy; 2024 NFPC.ae - All rights reserved</p>
+          <p>&copy; 2026 NFPC.ae - All rights reserved</p>
         </div>
       </div>
     </main>
