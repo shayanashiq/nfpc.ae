@@ -46,7 +46,7 @@ export default function Home() {
           <EmailButton email={email} />
 
           {/* WhatsApp Button */}
-          <a
+          {/* <a
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
@@ -54,7 +54,7 @@ export default function Home() {
           >
             <MessageCircle size={24} />
             WhatsApp
-          </a>
+          </a> */}
         </div>
 
         {/* Contact Info */}
