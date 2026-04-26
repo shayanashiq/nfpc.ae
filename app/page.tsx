@@ -64,9 +64,9 @@ export default function Home() {
             <p className="text-lg">
               <span className="font-semibold">Email:</span> {email}
             </p>
-            <p className="text-lg">
+            {/* <p className="text-lg">
               <span className="font-semibold">WhatsApp:</span> {PHONE_LOCAL_NUMBER}
-            </p>
+            </p> */}
           </div>
         </div>
 
